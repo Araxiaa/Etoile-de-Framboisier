@@ -1,0 +1,1391 @@
+:root {
+    --fond-foret: #120A0E;       /* Aubergine/Noir très sombre pour l'ambiance LGDC */
+    --carte-sombre: #1C1217;     /* Fond des encadrés */
+    --framboise-eclat: #E64A72;  /* Rose framboise lumineux pour les détails clés */
+    --framboise-douce: #AD3B57;  /* Framboise tamisée pour les textes secondaires */
+    --azur-etoile: #7AC5CD;      /* Bleu clair pour rappeler ses yeux et les étoiles */
+    --texte-clair: #F5E6EA;      /* Crème très clair pour une lecture douce */
+    --blanc: #FFFFFF;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--fond-foret);
+    color: var(--texte-clair);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-image: radial-gradient(rgba(230, 74, 114, 0.03) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+
+/* En-tête Lumineux/Sombre */
+header {
+    background: linear-gradient(180deg, #24131B 0%, var(--fond-foret) 100%);
+    border-bottom: 2px solid var(--framboise-eclat);
+    padding: 30px 0 0 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(230, 74, 114, 0.1);
+}
+
+header h1 {
+    font-family: 'Comfortaa', cursive;
+    color: var(--blanc);
+    text-shadow: 0 0 10px rgba(230, 74, 114, 0.6);
+    margin: 0;
+    font-size: 2.6rem;
+}
+
+header p {
+    font-style: italic;
+    color: var(--azur-etoile);
+    text-shadow: 0 0 5px rgba(122, 197, 205, 0.4);
+    margin: 8px 0 25px 0;
+}
+
+/* Menu de navigation fluide */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(28, 18, 23, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+nav a {
+    display: block;
+    padding: 15px 18px;
+    color: var(--texte-clair);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+nav a:hover, nav a.active {
+    color: var(--framboise-eclat);
+    background-color: rgba(230, 74, 114, 0.05);
+    box-shadow: inset 0 -3px 0 var(--framboise-eclat);
+}
+
+/* Conteneur */
+.container {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: 'Comfortaa', cursive;
+    color: var(--framboise-eclat);
+    border-bottom: 1px solid rgba(230, 74, 114, 0.2);
+    padding-bottom: 8px;
+    margin-top: 40px;
+}
+
+h2::before {
+    content: "🍓 ";
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.section-intro {
+    font-style: italic;
+    color: var(--framboise-douce);
+    margin-bottom: 20px;
+}
+
+/* Cartes transparentes sombres */
+.card {
+    background: var(--carte-sombre);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(173, 59, 87, 0.2);
+    margin-bottom: 25px;
+}
+
+.basic-info {
+    border-left: 4px solid var(--azur-etoile);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.info-grid p { margin: 0; }
+
+/* Structure de la Charte */
+.charte-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .charte-container { grid-template-columns: 1fr; }
+}
+
+.charte-rule {
+    background: #170E12;
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 3px solid var(--framboise-douce);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.charte-rule h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--texte-clair);
+}
+
+/* Grille Diplomatie */
+.diplomatie-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .diplomatie-grid { grid-template-columns: 1fr; }
+}
+
+.status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.status.neutral { background: rgba(122, 197, 205, 0.15); color: var(--azur-etoile); }
+.status.wary { background: rgba(173, 59, 87, 0.2); color: var(--framboise-eclat); }
+
+/* Onglet Galerie (CORRIGÉ POUR ÉVITER LES SOUCIS D'IMAGES) */
+.galerie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.gallery-card {
+    background: var(--carte-sombre);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(230, 74, 114, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--framboise-eclat);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.img-placeholder {
+    height: 220px;
+    background: #24171E;
+    display: none; /* Cache par défaut, apparaît via script onerror */
+    align-items: center;
+    justify-content: center;
+    color: var(--framboise-douce);
+    font-style: italic;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.gallery-credit {
+    padding: 15px;
+    background: rgba(0,0,0,0.2);
+    margin-top: auto;
+}
+
+.art-title { margin: 0; font-weight: bold; color: var(--texte-clair); }
+.art-author { margin: 5px 0 0 0; font-size: 0.85rem; color: var(--framboise-douce); }
+
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.85rem;
+    color: var(--framboise-douce);
+    border-top: 1px solid rgba(173, 59, 87, 0.1);
+    margin-top: 80px;
+}
+
+/* Badges pour l'arbre généalogique */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-left: 8px;
+    text-transform: uppercase;
+}
+.status-dead { background: rgba(255, 255, 255, 0.1); color: #8a7a80; border: 1px solid rgba(255,255,255,0.1); }
+.status-alive { background: rgba(46, 139, 87, 0.2); color: #98fb98; border: 1px solid rgba(46, 139, 87, 0.4); }
+.status-alive-pj { background: rgba(122, 197, 205, 0.2); color: var(--azur-etoile); border: 1px solid var(--azur-etoile); }
+.status-missing { background: rgba(218, 165, 32, 0.2); color: #f0e68c; border: 1px solid rgba(218, 165, 32, 0.4); }
+
+/* Agencement de l'onglet Lignée */
+.lignee-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.lignee-block {
+    background: var(--carte-sombre);
+    border: 1px solid rgba(173, 59, 87, 0.15);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.lignee-block h3 {
+    margin-top: 0;
+    color: var(--framboise-eclat);
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.1rem;
+    border-bottom: 1px dashed rgba(173, 59, 87, 0.3);
+    padding-bottom: 5px;
+}
+
+.lignee-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lignee-block li {
+    margin: 12px 0;
+    font-size: 0.95rem;
+}
+
+.role {
+    color: var(--framboise-douce);
+    font-weight: 600;
+}
+
+.sub-text {
+    font-size: 0.8rem;
+    color: #8a7a80;
+    font-style: italic;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .lignee-container { grid-template-columns: 1fr; }
+    .wide { grid-column: span 1; }
+}
+
+.soft-hr {
+    border: 0;
+    height: 1px;
+    background: rgba(173, 59, 87, 0.2);
+    margin: 15px 0;
+}
+
+/* --- DESIGN DE L'ONGLET HISTOIRE (TIMELINE) --- */
+.history-timeline {
+    position: relative;
+    border-left: 3px solid var(--framboise-douce);
+    margin: 30px 10px;
+    padding-left: 30px;
+}
+
+.history-chapter {
+    position: relative;
+    margin-bottom: 40px;
+    background: var(--carte-sombre);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(230, 74, 114, 0.1);
+}
+
+.chapter-num {
+    position: absolute;
+    left: -67px;
+    top: 15px;
+    background: var(--fond-foret);
+    color: var(--azur-etoile);
+    border: 2px solid var(--framboise-douce);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+    box-shadow: 0 0 8px rgba(230, 74, 114, 0.2);
+}
+
+.history-chapter h3 {
+    margin-top: 0;
+    color: var(--framboise-eclat);
+    font-family: 'Comfortaa', cursive;
+}
+
+.history-chapter p {
+    margin: 10px 0 0 0;
+    font-size: 0.95rem;
+    text-align: justify;
+}
+
+.upcoming {
+    border: 1px dashed rgba(122, 197, 205, 0.3);
+    background: transparent;
+}
+.upcoming .chapter-num {
+    border-color: var(--azur-etoile);
+    color: var(--framboise-douce);
+}
+
+/* --- INTERACTION DU CONTENEUR D'AVATARS (CORRIGÉ) --- */
+.family-tree-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.family-tree-list li {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.avatar-wrapper {
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.cat-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+img.cat-avatar {
+    border: 2px solid var(--azur-etoile);
+    object-fit: cover;
+}
+
+/* Silhouettes par défaut stables */
+.dead-avatar { background-color: #2D2327; }
+.dead-avatar::before { content: "💀"; position: absolute; left: 13px; top: 10px; font-size: 1.1rem; opacity: 0.4; }
+
+.alive-avatar { background-color: #1A2820; }
+.alive-avatar::before { content: "🐾"; position: absolute; left: 13px; top: 11px; font-size: 1.1rem; opacity: 0.4; }
+
+.missing-avatar { background-color: #2D281E; }
+.missing-avatar::before { content: "❓"; position: absolute; left: 15px; top: 11px; font-size: 1rem; opacity: 0.3; }
+
+.pj-avatar-default { background-color: #1A2529; border: 1px dashed var(--azur-etoile); width: 100%; height: 100%; border-radius: 50%; }
+.pj-avatar-default::before { content: "🐱"; position: absolute; left: 12px; top: 11px; font-size: 1.1rem; opacity: 0.6; }
+
+.cat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-name {
+    margin: 0 !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.cat-player {
+    margin: 2px 0 0 0 !important;
+    font-size: 0.8rem;
+    color: var(--framboise-douce);
+}
+
+.cat-player strong {
+    color: var(--azur-etoile);
+}
+
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+}
+.grid-list li { margin-bottom: 0 !important; }
+
+/* --- DESIGN DE L'ONGLET DES NEUF VIES --- */
+.vies-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.vie-card {
+    display: flex;
+    align-items: center;
+    background: var(--carte-sombre);
+    border-radius: 8px;
+    padding: 15px 20px;
+    transition: transform 0.2s;
+}
+
+.vie-number {
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.vie-detail {
+    flex-grow: 1;
+}
+
+.vie-detail h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vie-detail p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    color: #A69299;
+}
+
+.active-vie { border: 1px solid rgba(122, 197, 205, 0.15); }
+.active-vie .vie-number {
+    background: rgba(122, 197, 205, 0.1);
+    color: var(--azur-etoile);
+    border: 2px solid var(--azur-etoile);
+    box-shadow: 0 0 10px rgba(122, 197, 205, 0.2);
+}
+.active-vie h3 { color: var(--texte-clair); }
+
+.lost {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.6;
+}
+.lost .vie-number {
+    background: #231C1F;
+    color: #615257;
+    border: 2px solid #4A3E43;
+}
+.lost h3 { color: #8A7A80; text-decoration: line-through; }
+
+.badge-vie {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: normal;
+}
+.status-lost-vie { background: rgba(230, 74, 114, 0.15); color: var(--framboise-eclat); }
+.status-active-vie { background: rgba(122, 197, 205, 0.1); color: var(--azur-etoile); }
+
+/* --- CSS POUR LE TABLEAU DE BORD (ACCUEIL) --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+.character-showcase {
+    border-left: 4px solid var(--framboise-eclat) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.showcase-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-avatar {
+    width: 60px;
+    height: 60px;
+    background: rgba(230, 74, 114, 0.1);
+    border: 2px solid var(--framboise-eclat);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgba(230, 74, 114, 0.2);
+}
+
+.showcase-title h3 { margin: 0; color: var(--blanc); font-size: 1.3rem; }
+
+.stats-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-bar-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-bar-group label {
+    font-size: 0.8rem;
+    color: var(--texte-clair);
+    font-weight: 600;
+}
+
+.bar-container {
+    background: rgba(0, 0, 0, 0.4);
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bar {
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.age-bar { background: linear-gradient(90deg, var(--framboise-douce), var(--framboise-eclat)); }
+.lives-bar { background: linear-gradient(90deg, #5398A0, var(--azur-etoile)); }
+.stamina-bar { background: linear-gradient(90deg, #A2423D, #D3544E); }
+
+.quick-specs {
+    border-left: 4px solid var(--azur-etoile) !important;
+    display: flex;
+    align-items: center;
+}
+
+.specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.specs-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+}
+
+.specs-list li:last-child { border-bottom: none; }
+.spec-label { color: var(--azur-etoile); font-weight: 600; }
+
+/* --- CSS POUR L'AGENCEMENT DU PHYSIQUE --- */
+.physique-layout {
+    display: grid;
+    grid-template-columns: 1.7fr 1.3fr;
+    gap: 25px;
+}
+
+@media (max-width: 850px) {
+    .physique-layout { grid-template-columns: 1fr; }
+}
+
+.global-desc p {
+    font-size: 0.95rem;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+.global-desc p:last-child { margin-bottom: 0; }
+
+.attributes-card { border-top: 3px solid var(--framboise-douce); }
+.attribute-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+.attr-icon {
+    font-size: 1.4rem;
+    background: rgba(255,255,255,0.03);
+    padding: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.attribute-item h4 { margin: 0 0 5px 0; color: var(--blanc); font-size: 1rem; }
+.attribute-item p { margin: 0; font-size: 0.9rem; color: #A69299; text-align: justify; }
+
+.side-title { margin-top: 0; font-size: 1.1rem; padding-bottom: 5px; }
+.mechanics-strength { color: #8ED1A2; border-bottom: 1px solid rgba(142, 209, 162, 0.2); }
+.mechanics-weakness { color: #E57D78; border-bottom: 1px solid rgba(229, 125, 120, 0.2); }
+
+.strength-card { border-top: 3px solid #68A37A; }
+.weakness-card { border-top: 3px solid #B2534E; }
+
+.mechanic-block { margin: 18px 0; }
+.mechanic-block:last-child { margin-bottom: 0; }
+.mechanic-block h5 { margin: 0 0 4px 0; font-size: 0.95rem; color: var(--texte-clair); }
+.mechanic-block p { margin: 0; font-size: 0.85rem; color: #A69299; line-height: 1.4; }
+
+/* --- STYLE DE L'ONGLET CARACTÈRE & PERSONNALITÉ --- */
+.traits-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .traits-container { grid-template-columns: 1fr; }
+}
+
+.trait-title { margin-top: 0; font-size: 1.1rem; padding-bottom: 5px; }
+.title-qualities { color: #8ED1A2; border-bottom: 1px solid rgba(142, 209, 162, 0.2); }
+.title-defects { color: #E57D78; border-bottom: 1px solid rgba(229, 125, 120, 0.2); }
+
+.quality-box { border-top: 3px solid #68A37A; }
+.defect-box { border-top: 3px solid #B2534E; }
+
+.trait-item { margin: 20px 0; }
+.trait-item:first-of-type { margin-top: 10px; }
+.trait-item:last-child { margin-bottom: 0; }
+.trait-item h5 { margin: 0 0 4px 0; font-size: 1rem; color: var(--blanc); }
+.trait-item p { margin: 0; font-size: 0.9rem; color: #A69299; text-align: justify; }
+
+.preferences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.likes-card { border-top: 3px solid #4E8EA3; }
+.dislikes-card { border-top: 3px solid #6E5361; }
+.fears-card { border-top: 3px solid #C49746; }
+
+.preferences-grid h3 { margin-top: 0; font-size: 1.1rem; font-family: 'Comfortaa', cursive; }
+.preferences-grid ul { padding-left: 20px; margin: 0; }
+.preferences-grid li { margin: 12px 0; font-size: 0.9rem; color: #FAF0F2; }
+.preferences-grid li strong { color: var(--blanc); }
+
+/* --- STYLE DE L'ONGLET RELATIONS & DIPLOMATIE --- */
+
+/* Boîte de légende des icônes */
+.index-legende {
+    border-left: 4px solid var(--azur-etoile) !important;
+    background: rgba(0, 0, 0, 0.2);
+}
+.index-legende h3 { margin-top: 0; font-size: 1rem; color: var(--azur-etoile); }
+
+.legende-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+.legende-item {
+    font-size: 0.85rem;
+    color: #A69299;
+    display: flex;
+    align-items: center;
+}
+
+/* Les petits badges d'affinités colorés */
+.badge-rel {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+.fav-3 { background: rgba(230, 74, 114, 0.2); color: #FF6B8B; border: 1px solid rgba(230, 74, 114, 0.4); }
+.fav-1 { background: rgba(211, 84, 111, 0.15); color: #E8899E; border: 1px solid rgba(211, 84, 111, 0.3); }
+.neutral-rel { background: rgba(255, 255, 255, 0.05); color: #B5A1A7; border: 1px solid rgba(255, 255, 255, 0.1); }
+.respect-rel { background: rgba(122, 197, 205, 0.15); color: var(--azur-etoile); border: 1px solid rgba(122, 197, 205, 0.4); }
+.dead-rel { background: #261D21; color: #736267; border: 1px solid #42353A; }
+
+/* Grille des fiches individuelles */
+.relations-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 880px) {
+    .relations-list-grid { grid-template-columns: 1fr; }
+}
+
+.relation-profile-card {
+    border-top: 2px solid rgba(230, 74, 114, 0.15);
+    display: flex;
+    flex-direction: column;
+    padding: 20px !important;
+}
+
+.rel-profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rel-profile-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.rel-profile-meta h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: 'Comfortaa', cursive;
+    color: var(--blanc);
+}
+
+.badges-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.badges-row .badge {
+    margin-left: 0; /* Aligne le badge de rôle avec l'affinité */
+}
+
+.rel-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #FAF0F2;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.global-clan-card {
+    border-left: 4px solid var(--framboise-douce) !important;
+}
+.global-clan-card p {
+    text-align: justify;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+.global-clan-card p:last-child { margin-bottom: 0; }
+
+/* --- AMÉLIORATION DE L'ARBRE GÉNÉALOGIQUE (GRILLE VISUELLE) --- */
+.lignee-sub-title {
+    font-family: 'Comfortaa', cursive;
+    color: var(--azur-etoile);
+    font-size: 1.1rem;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--azur-etoile);
+    padding-left: 10px;
+}
+
+.family-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.family-card {
+    background: var(--carte-sombre);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, border-color 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.family-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Bordures légères selon la nature du membre */
+.dead-card-bg { border-bottom: 3px solid #4A3E43; }
+.alive-card-bg { border-bottom: 3px solid #4E7C5E; }
+.pj-card-bg { border-bottom: 3px solid var(--azur-etoile); border-top: 1px solid rgba(122, 197, 205, 0.1); }
+.missing-card-bg { border-bottom: 3px solid #8C7643; }
+
+.family-avatar-box {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 12px;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Ajustement des images réelles dans la bulle de l'arbre */
+.family-avatar-box img.cat-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Ajustement des silhouettes par défaut */
+.family-avatar-box .cat-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.family-avatar-box .dead-avatar::before { left: 32px; top: 28px; font-size: 1.4rem; }
+.family-avatar-box .alive-avatar::before { left: 31px; top: 28px; font-size: 1.4rem; }
+.family-avatar-box .missing-avatar::before { left: 34px; top: 29px; font-size: 1.3rem; }
+.family-avatar-box .pj-avatar-default::before { left: 31px; top: 28px; font-size: 1.4rem; }
+
+/* Textes à l'intérieur des cartes */
+.family-details h4 {
+    margin: 0 0 5px 0;
+    font-size: 0.95rem;
+    color: var(--texte-clair);
+}
+.family-details .important-blood {
+    color: var(--blanc);
+    text-shadow: 0 0 5px rgba(255,255,255,0.1);
+}
+
+.family-details .badge {
+    margin: 0 0 8px 0 !important;
+    font-size: 0.65rem;
+}
+
+.family-role {
+    margin: 3px 0 !important;
+    font-size: 0.8rem;
+    color: var(--texte-clair);
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+.family-player {
+    margin: 0 !important;
+    font-size: 0.75rem;
+    color: var(--framboise-douce);
+}
+.family-player strong { color: var(--azur-etoile); }
+
+
+/* --- DESIGN DU TABLEAU JOURNAL DES LUNES --- */
+.journal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--carte-sombre);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid rgba(173, 59, 87, 0.1);
+}
+
+.journal-table th {
+    background-color: rgba(28, 18, 23, 0.9);
+    color: var(--framboise-eclat);
+    font-family: 'Comfortaa', cursive;
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    border-bottom: 2px solid var(--framboise-douce);
+}
+
+.journal-table td {
+    padding: 12px 15px;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--texte-clair);
+}
+
+.journal-table tr:hover {
+    background-color: rgba(230, 74, 114, 0.02);
+}
+
+.journal-lune {
+    font-weight: bold;
+    color: var(--azur-etoile);
+}
+
+.journal-link {
+    color: var(--framboise-eclat);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.journal-link:hover {
+    text-decoration: underline;
+    color: var(--blanc);
+}
+
+.journal-empty {
+    opacity: 0.4;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* --- REFONTE DE LA LIGNÉE EN CASCADES CHRONOLOGIQUES --- */
+.tree-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 25px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.tree-generation {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.generation-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--framboise-douce);
+    margin-bottom: 15px;
+    font-weight: bold;
+    background: rgba(18, 10, 14, 0.8);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(173, 59, 87, 0.2);
+}
+
+.generation-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Connecteurs entre étages */
+.tree-line-connector {
+    font-size: 1.2rem;
+    color: var(--framboise-douce);
+    margin: 5px 0;
+    opacity: 0.6;
+}
+
+/* Différenciation des cartes */
+.family-card.compact {
+    padding: 8px 12px;
+    min-width: 140px;
+    flex-direction: row;
+    gap: 10px;
+    text-align: left;
+}
+.family-card.compact .family-avatar-box {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 0;
+}
+.family-card.compact h4 {
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}
+.family-card.compact .family-role {
+    font-size: 0.7rem;
+}
+
+/* Séparateurs textuels ou visuels dans les lignes */
+.family-branch-title {
+    font-size: 0.75rem;
+    color: #736267;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: -5px;
+}
+.tree-separator-branch {
+    width: 2px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0 15px;
+}
+@media (max-width: 768px) {
+    .tree-separator-branch { display: none; }
+}
+
+/* Bloc parents unis */
+.parent-couple-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(78, 124, 94, 0.04);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(78, 124, 94, 0.1);
+}
+.couple-heart {
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+    opacity: 0.7;
+}
+
+/* Carte spéciale : Étoile de Framboisier au centre */
+.framboisier-hero-card {
+    border: 2px solid var(--azur-etoile) !important;
+    background: radial-gradient(circle at top, rgba(122, 197, 205, 0.1) 0%, var(--carte-sombre) 100%) !important;
+    transform: scale(1.05);
+    position: relative;
+    box-shadow: 0 0 15px rgba(122, 197, 205, 0.2) !important;
+    z-index: 5;
+}
+.hero-crown {
+    position: absolute;
+    top: -12px;
+    font-size: 1.2rem;
+}
+
+/* Attaches et styles subsidiaires */
+.adaptive-link { border-style: dashed; }
+.grayscale { opacity: 0.5; filter: grayscale(40%); }
+.highlander-tag {
+    font-size: 0.65rem;
+    background: rgba(140, 118, 67, 0.2);
+    color: #D9C391;
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-left: 2px;
+}
+.central-children {
+    gap: 30px;
+}
+
+/* --- ORGANISATION DES ONGLETS CARACTÈRE & PHYSIQUE --- */
+
+/* Onglet Caractère : Grille des badges */
+.traits-badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.trait-column {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+.trait-column h3 {
+    margin: 0 0 12px 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Comfortaa', cursive;
+}
+.trait-column.pos h3 { color: #4E7C5E; }
+.trait-column.neu h3 { color: #A69299; }
+.trait-column.neg h3 { color: var(--framboise-douce); }
+
+.badge-trait {
+    display: block;
+    background: var(--fond-foret);
+    padding: 6px;
+    margin: 6px 0;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.character-layout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.border-azur { border-left: 4px solid var(--azur-etoile) !important; }
+.border-framboise { border-left: 4px solid var(--framboise-douce) !important; }
+
+/* Listes personnalisées */
+.custom-bullets-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.custom-bullets-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--texte-clair);
+}
+.custom-bullets-list li::before {
+    content: "🍓";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 0.85rem;
+}
+
+/* Onglet Physique : Fiche technique rapide */
+.spec-sheet-card {
+    background: linear-gradient(135deg, rgba(122, 197, 205, 0.05) 0%, var(--carte-sombre) 100%) !important;
+    border: 1px solid rgba(122, 197, 205, 0.1) !important;
+}
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+.spec-item {
+    font-size: 0.85rem;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    color: #FAF0F2;
+}
+
+.attribute-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.dynamic-accent-card {
+    border-top: 3px solid var(--azur-etoile);
+}
+
+/* --- AMÉLIORATION DE LA STRUCTURATION SANS COUPE DE TEXTE --- */
+.traits-container, .physique-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 850px) {
+    .traits-container, .physique-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.trait-item {
+    margin-bottom: 20px;
+}
+.trait-item h5 {
+    font-size: 1.05rem;
+    color: var(--blanc);
+    margin: 0 0 5px 0;
+}
+.trait-item p, .preferences-grid p, .card p {
+    text-align: justify;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.preferences-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .preferences-grid { grid-template-columns: 1fr; }
+}
+
+.border-azur { border-left: 4px solid var(--azur-etoile) !important; }
+.border-framboise { border-left: 4px solid var(--framboise-douce) !important; }
+
+.title-qualities { color: #8ED1A2; border-bottom: 1px solid rgba(142, 209, 162, 0.2); }
+.title-defects { color: #E57D78; border-bottom: 1px solid rgba(229, 125, 120, 0.2); }
+.mechanics-strength { color: #8ED1A2; border-bottom: 1px solid rgba(142, 209, 162, 0.2); margin-top: 0; }
+.mechanics-weakness { color: #E57D78; border-bottom: 1px solid rgba(229, 125, 120, 0.2); margin-top: 0; }
+
+.quality-box { border-top: 3px solid #4E7C5E; }
+.defect-box { border-top: 3px solid var(--framboise-douce); }
+.strength-card { border-top: 3px solid #4E7C5E; }
+.weakness-card { border-top: 3px solid var(--framboise-douce); }
+.likes-card { border-top: 3px solid #4E8EA3; }
+.dislikes-card { border-top: 3px solid #6E5361; }
+
+/* --- STYLE DES LISTES DÉROULANTES (ACCORDÉONS) --- */
+.dropdown-container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Cache la petite flèche noire par défaut des navigateurs */
+.custom-details summary::-webkit-details-marker {
+    display: none;
+}
+.custom-details summary {
+    list-style: none;
+}
+
+/* Style de la boîte/bouton cliquable */
+.custom-details {
+    background: var(--carte-sombre);
+    border: 1px solid rgba(230, 74, 114, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.dropdown-btn {
+    padding: 15px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--texte-clair);
+    cursor: pointer;
+    background: linear-gradient(90deg, rgba(28, 18, 23, 0.6), rgba(0, 0, 0, 0.2));
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.dropdown-btn:hover {
+    background: rgba(230, 74, 114, 0.08);
+    color: var(--framboise-eclat);
+}
+
+/* Petite animation quand le menu s'ouvre */
+.custom-details[open] {
+    border-color: var(--framboise-eclat);
+    box-shadow: 0 0 12px rgba(230, 74, 114, 0.15);
+}
+
+.custom-details[open] .dropdown-btn {
+    border-bottom: 1px solid rgba(230, 74, 114, 0.2);
+    color: var(--framboise-eclat);
+    background: rgba(230, 74, 114, 0.04);
+}
+
+/* Conteneur de texte caché qui se dévoile */
+.dropdown-content {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    animation: fadeInDropdown 0.4s ease;
+}
+
+.dropdown-content h5 {
+    margin: 0 0 8px 0;
+    font-size: 1.05rem;
+    color: var(--blanc);
+}
+
+.dropdown-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    text-align: justify;
+    color: #FAF0F2;
+}
+
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- AMÉLIORATION STRUTURELLE SIDE-BY-SIDE (ACCORDÉONS SUR LE CÔTÉ) --- */
+.onglet-split-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1.1fr; /* Configure les proportions des colonnes */
+    gap: 30px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.split-main-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.split-side-panel {
+    position: sticky;
+    top: 20px; /* Les menus suivent le scroll et restent visibles en haut */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Ajustement pour les petits écrans (tablettes et smartphones) */
+@media (max-width: 950px) {
+    .onglet-split-layout {
+        grid-template-columns: 1fr; /* Repasse sur une colonne sur mobile */
+        gap: 20px;
+    }
+    .split-side-panel {
+        position: static;
+    }
+}
+
+/* Style affiné pour les boîtes déroulantes situées sur le côté */
+.split-side-panel .dropdown-container {
+    margin-top: 0;
+}
+
+.split-side-panel .custom-details {
+    border-left: 4px solid var(--framboise-douce);
+    border-top: none; /* Remplacement de la bordure du haut par une bordure latérale chic */
+}
+
+/* Couleurs personnalisées pour les bordures gauches des boutons latéraux */
+.split-side-panel .quality-box { border-left-color: #4E7C5E; }
+.split-side-panel .defect-box { border-left-color: var(--framboise-douce); }
+.split-side-panel .strength-card { border-left-color: #4E7C5E; }
+.split-side-panel .likes-card { border-left-color: #4E8EA3; }
+
+.split-side-panel .dropdown-btn {
+    padding: 14px 18px;
+    font-size: 0.92rem;
+}
