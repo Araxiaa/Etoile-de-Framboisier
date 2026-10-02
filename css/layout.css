@@ -1,0 +1,128 @@
+/* ==========================================================================
+   LAYOUT — en-tête, menu, pied de page, structure des pages.
+   ========================================================================== */
+
+/* ---------- En-tête ---------- */
+.site-header {
+    position: relative;
+    background: var(--creme);
+    border-bottom: 1px solid var(--brume-profonde);
+}
+
+/* Bandeau roux aux extrémités, crème au centre : sa robe red point */
+.site-header::before {
+    content: "";
+    display: block;
+    height: 10px;
+    background: var(--pelage);
+}
+
+.site-header .barre {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    flex-wrap: wrap;
+}
+
+.marque {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--encre);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.marque:hover { color: var(--framboise); }
+
+.menu {
+    display: flex;
+    gap: 2px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    max-width: 100%;
+    scrollbar-width: thin;
+}
+
+.menu a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: var(--encre-douce);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.menu a:hover { background: var(--creme-ombre); color: var(--encre); }
+.menu a[aria-current="page"] {
+    background: var(--framboise-pale);
+    color: var(--framboise);
+}
+
+/* ---------- Structure ---------- */
+.conteneur {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+main { padding-bottom: 40px; }
+
+.tete-page { padding: 56px 0 8px; }
+.tete-page .intro {
+    margin: 12px 0 0;
+    max-width: var(--mesure);
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--encre-douce);
+}
+
+/* Filet "pelage" : crème au centre, roux aux bouts */
+.filet-pelage {
+    height: 4px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--pelage);
+    margin: 22px 0 0;
+}
+
+.section { margin-top: 56px; }
+.section > h2 { margin-bottom: 20px; }
+
+/* Texte + encart latéral */
+.deux-colonnes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 48px;
+    align-items: start;
+    margin-top: 40px;
+}
+.encart-lateral {
+    position: sticky;
+    top: 24px;
+    display: grid;
+    gap: 20px;
+}
+
+@media (max-width: 900px) {
+    .deux-colonnes { grid-template-columns: 1fr; gap: 28px; }
+    .encart-lateral { position: static; }
+}
+
+/* ---------- Pied de page ---------- */
+.site-footer {
+    margin-top: 72px;
+    padding: 32px 24px 40px;
+    text-align: center;
+    color: var(--encre-douce);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--brume-profonde);
+    background: var(--creme);
+}
+.site-footer p { margin: 0 0 4px; }

@@ -1,0 +1,103 @@
+/* ==========================================================================
+   BASE — couleurs, polices, réglages de lecture.
+   C'est ici qu'on change l'identité visuelle du site.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:wght@400;500;600&display=swap');
+
+:root {
+    /* Le ciel d'été de ses yeux */
+    --brume: #E6ECF1;            /* fond de page */
+    --brume-profonde: #CFDAE4;   /* filets, bordures */
+    --azur: #6FAFD0;
+    --azur-pale: #D9EAF3;
+    --azur-profond: #2F6F95;     /* liens, focus (lisible sur crème) */
+
+    /* Son pelage red point : blanc crème, extrémités rousses */
+    --creme: #FBF7F0;            /* surfaces */
+    --creme-ombre: #F1EADD;
+    --roux: #D9803E;
+    --roux-pale: #F3D9C2;
+
+    /* Le fruit */
+    --framboise: #B23A5C;
+    --framboise-pale: #F6DDE4;
+
+    /* Texte */
+    --encre: #2A2730;
+    --encre-douce: #5B5763;
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    --mesure: 68ch;
+    --rayon-l: 20px;
+    --rayon-m: 12px;
+    --rayon-s: 8px;
+
+    /* Signature : la couleur n'existe qu'aux extrémités */
+    --pelage: linear-gradient(90deg,
+        var(--roux) 0%, var(--roux-pale) 14%, var(--creme) 32%,
+        var(--creme) 68%, var(--roux-pale) 86%, var(--roux) 100%);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: var(--brume);
+    background-image: linear-gradient(180deg, var(--azur-pale) 0, var(--brume) 480px);
+    background-repeat: no-repeat;
+    color: var(--encre);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--encre);
+}
+
+h1 { font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 400; letter-spacing: -0.01em; }
+h2 { font-size: 1.65rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; }
+
+p { margin: 0 0 1em; }
+
+a {
+    color: var(--azur-profond);
+    text-underline-offset: 3px;
+}
+a:hover { color: var(--framboise); }
+
+:focus-visible {
+    outline: 3px solid var(--azur);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+img { max-width: 100%; display: block; }
+
+.lien-evitement {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    background: var(--creme);
+    padding: 8px 16px;
+    border-radius: var(--rayon-s);
+    z-index: 100;
+}
+.lien-evitement:focus { left: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
