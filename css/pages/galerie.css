@@ -1,0 +1,43 @@
+/* ==========================================================================
+   GALERIE — les illustrations, chacune dans ses proportions.
+   ========================================================================== */
+
+.galerie {
+    margin-top: 40px;
+    columns: 3 260px;
+    column-gap: 24px;
+}
+
+.oeuvre {
+    margin: 0 0 24px;
+    break-inside: avoid;
+    background: var(--creme);
+    border: 1px solid var(--brume-profonde);
+    border-radius: var(--rayon-m);
+    overflow: hidden;
+}
+.oeuvre a { display: block; }
+.oeuvre img { width: 100%; height: auto; }
+
+.oeuvre figcaption {
+    padding: 12px 16px 14px;
+    font-size: 0.9rem;
+    color: var(--encre-douce);
+}
+.oeuvre figcaption strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: var(--encre);
+}
+
+.oeuvre-manquante {
+    padding: 48px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--encre-douce);
+    background: var(--creme-ombre);
+    overflow-wrap: anywhere;
+}

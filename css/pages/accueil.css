@@ -1,0 +1,74 @@
+/* ==========================================================================
+   ACCUEIL — portrait, fiche rapide, charte du clan.
+   ========================================================================== */
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: 56px;
+    align-items: center;
+    padding: 72px 0 8px;
+}
+
+.hero h1 {
+    font-size: clamp(2.9rem, 8vw, 5.4rem);
+    font-weight: 350;
+    line-height: 1;
+    letter-spacing: -0.025em;
+}
+
+.devise {
+    margin: 28px 0 4px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--framboise);
+}
+.fonction { margin: 0; color: var(--encre-douce); }
+
+.hero-vies { margin-top: 36px; }
+
+@media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 48px; }
+}
+
+/* Fiche rapide */
+.fiche-dl.en-colonnes {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 48px;
+}
+.fiche-dl.en-colonnes > div:nth-last-child(-n+2) { border-bottom: 0; }
+
+@media (max-width: 700px) {
+    .fiche-dl.en-colonnes { grid-template-columns: 1fr; }
+    .fiche-dl.en-colonnes > div:nth-last-child(2) { border-bottom: 1px solid var(--brume-profonde); }
+}
+
+/* Charte : un texte de loi, pas une grille de cartes */
+.charte { list-style: none; margin: 0; padding: 0; }
+.charte li {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 20px;
+    padding: 24px 0;
+    border-top: 1px solid var(--brume-profonde);
+}
+.charte li:first-child { border-top: 0; padding-top: 0; }
+.charte li:last-child { padding-bottom: 0; }
+
+.charte-num {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--framboise);
+    line-height: 1.2;
+}
+.charte h3 { margin-bottom: 6px; }
+.charte h3 small {
+    margin-left: 8px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--encre-douce);
+}
+.charte p { margin: 0; max-width: var(--mesure); }

@@ -1,0 +1,106 @@
+/* ==========================================================================
+   LIGNÉE — l'arbre généalogique.
+   ========================================================================== */
+
+.arbre { margin-top: 40px; }
+
+.generation { text-align: center; }
+
+.gen-titre {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--encre-douce);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.groupes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 48px;
+}
+
+.groupe-titre {
+    margin-bottom: 12px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--encre-douce);
+}
+
+.membres { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+
+/* Trait vertical entre deux générations */
+.lien-gen {
+    width: 2px;
+    height: 36px;
+    margin: 20px auto;
+    background: var(--brume-profonde);
+}
+
+/* Un chat */
+.fiche-chat {
+    width: 164px;
+    padding: 18px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: var(--creme);
+    border: 1px solid var(--brume-profonde);
+    border-radius: var(--rayon-m);
+    position: relative;
+}
+.fiche-chat .avatar { width: 72px; height: 72px; margin-bottom: 8px; }
+.fiche-chat h4 { font-size: 1rem; }
+.fiche-role { margin: 0; font-size: 0.9rem; color: var(--encre-douce); }
+.fiche-etiquettes { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 6px; }
+.fiche-etiquettes:empty { display: none; }
+.fiche-joueur { margin: 4px 0 0; font-size: 0.85rem; color: var(--encre-douce); }
+
+/* Les deux parents sont reliés */
+.groupe.couple .membres { gap: 40px; }
+.groupe.couple .fiche-chat + .fiche-chat::before {
+    content: "";
+    position: absolute;
+    left: -41px;
+    top: 52px;
+    width: 40px;
+    height: 2px;
+    background: var(--framboise-pale);
+}
+
+/* Statuts */
+.fiche-chat.statut-vivant-pj .avatar { box-shadow: 0 0 0 3px var(--azur-pale), 0 0 0 5px var(--azur); }
+
+.fiche-chat.statut-decede { background: var(--creme-ombre); }
+.fiche-chat.statut-decede .avatar { filter: grayscale(1); opacity: 0.7; }
+.fiche-chat.statut-decede h4 { color: var(--encre-douce); }
+
+.fiche-chat.statut-disparu { border-style: dashed; }
+.fiche-chat.statut-disparu .avatar { opacity: 0.8; }
+
+.fiche-chat.statut-vide {
+    background: transparent;
+    border-style: dashed;
+    color: var(--encre-douce);
+}
+.fiche-chat.statut-vide .avatar { background: transparent; border: 2px dashed var(--brume-profonde); }
+.fiche-chat.statut-vide .avatar::before { content: ""; }
+.fiche-chat.statut-vide h4 { color: var(--encre-douce); font-weight: 400; font-style: italic; }
+
+/* Lui : plus grand, cerclé de framboise */
+.fiche-chat.statut-heros {
+    width: 200px;
+    border-color: var(--framboise);
+    border-width: 2px;
+    background: #FFFDF9;
+}
+.fiche-chat.statut-heros .avatar {
+    width: 96px;
+    height: 96px;
+    box-shadow: 0 0 0 3px var(--creme), 0 0 0 5px var(--framboise);
+}
+.fiche-chat.statut-heros h4 { font-size: 1.1rem; }

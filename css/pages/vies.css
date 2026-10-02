@@ -1,0 +1,58 @@
+/* ==========================================================================
+   VIES — les neuf souffles accordés par le Clan des Étoiles.
+   ========================================================================== */
+
+.bilan-vies { margin-top: 28px; }
+
+.liste-vies {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 8px 32px;
+    background: var(--creme);
+    border: 1px solid var(--brume-profonde);
+    border-radius: var(--rayon-l);
+}
+
+.vie {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid var(--brume-profonde);
+}
+.vie:first-child { border-top: 0; }
+
+.vie-n {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    background: var(--azur-pale);
+    color: var(--azur-profond);
+}
+
+.vie h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+    margin-bottom: 6px;
+}
+.vie p { margin: 0; max-width: var(--mesure); }
+
+/* Une vie perdue : le cercle devient pointillé */
+.vie.perdue .vie-n {
+    background: transparent;
+    border: 2px dashed var(--encre-douce);
+    color: var(--encre-douce);
+}
+.vie.perdue h3 { color: var(--encre-douce); }
+
+@media (max-width: 560px) {
+    .liste-vies { padding: 4px 20px; }
+    .vie { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; }
+    .vie-n { width: 38px; height: 38px; }
+}

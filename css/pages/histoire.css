@@ -1,0 +1,67 @@
+/* ==========================================================================
+   HISTOIRE — la chronique, lune après lune.
+   La colonne de gauche indique l'âge : c'est ça, l'ordre des chapitres.
+   ========================================================================== */
+
+.chronique { list-style: none; margin: 40px 0 0; padding: 0; }
+
+.periode {
+    position: relative;
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 0 40px;
+    padding-bottom: 32px;
+}
+
+/* La ligne du temps et son point */
+.periode::before {
+    content: "";
+    position: absolute;
+    left: 170px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--brume-profonde);
+}
+.periode::after {
+    content: "";
+    position: absolute;
+    left: 164px;
+    top: 30px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--framboise);
+    box-shadow: 0 0 0 4px var(--brume);
+}
+.periode:last-child { padding-bottom: 0; }
+.periode:last-child::before { bottom: auto; height: 36px; }
+
+.periode-lune {
+    padding-top: 24px;
+    text-align: right;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--encre-douce);
+}
+
+.periode-corps {
+    background: var(--creme);
+    border: 1px solid var(--brume-profonde);
+    border-radius: var(--rayon-l);
+    padding: 24px 30px 14px;
+}
+.periode-corps h3 { margin-bottom: 12px; }
+.periode-corps p { max-width: var(--mesure); }
+
+/* La suite reste à écrire */
+.periode.a-venir::after { background: var(--brume); border: 2px dashed var(--encre-douce); }
+.periode.a-venir .periode-corps { background: transparent; border-style: dashed; color: var(--encre-douce); }
+.periode.a-venir .periode-corps h3 { color: var(--encre-douce); font-style: italic; font-weight: 400; }
+
+@media (max-width: 700px) {
+    .periode { grid-template-columns: 1fr; padding-left: 30px; }
+    .periode::before { left: 6px; }
+    .periode::after { left: 0; top: 4px; }
+    .periode-lune { text-align: left; padding: 0 0 8px; }
+}
